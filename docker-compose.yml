@@ -1,0 +1,18 @@
+services:
+  api:
+    build:
+      context: ./sdv-api
+      target: builder
+    volumes:
+      - ./sdv-api:/app
+    command: cargo run
+    
+  web:
+    build:
+      context: ./sdv-web
+    ports:
+      - "3000:3000"
+    environment:
+      - API_URL=http://api:8000
+    depends_on:
+      - api  # Assure-toi que l'API est démarrée avant l'application web

@@ -15,4 +15,4 @@ services:
     environment:
       - API_URL=http://api:8000
     depends_on:
-      - api  # Assure-toi que l'API est démarrée avant l'application web
+      - api  
